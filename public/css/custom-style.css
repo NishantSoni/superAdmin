@@ -1,0 +1,31 @@
+.head-no-wrap{
+    white-space: nowrap;
+}
+
+.head-no-wrap a:hover{
+    text-decoration: none;
+}
+
+.input-group .form-control {
+    height: calc(2.19rem + 4px);
+}
+
+.checkbox-field input{
+    width:8%;
+}
+
+.modal-body{
+    text-align: left;
+}
+
+.form-control:focus {
+    box-shadow: none;
+}
+
+.card .card-header .h5{
+    margin-top: 10px;
+}
+
+.table-responsive{
+    padding: 0 15px;
+}
