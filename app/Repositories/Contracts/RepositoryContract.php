@@ -1,29 +1,18 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Repositories\Contracts;
 
-use App\Repositories\Contracts\RepositoryContract;
 use Illuminate\Database\Eloquent\Collection;
 
-abstract class Repository implements RepositoryContract
+Interface RepositoryContract
 {
-    /**
-     * Object of particular model
-     *
-     * @var object
-     */
-    protected $model;
-
     /**
      * Method to create new record.
      *
      * @param array $attributes
      * @return collection
      */
-    public function create(array $attributes)
-    {
-        return $this->model->create($attributes);
-    }
+    public function create(array $attributes);
 
     /**
      * Method to insert multiple records at once.
@@ -31,10 +20,7 @@ abstract class Repository implements RepositoryContract
      * @param array $records
      * @return mixed
      */
-    public function insertMultipleRows(array $records)
-    {
-        return $this->model->insert($records);
-    }
+    public function insertMultipleRows(array $records);
 
     /**
      * Method to find record by its primary key.
@@ -42,10 +28,7 @@ abstract class Repository implements RepositoryContract
      * @param int $id
      * @return collection
      */
-    public function find($id)
-    {
-        return $this->model->find($id);
-    }
+    public function find($id);
 
     /**
      * Method to update existing record.
@@ -55,12 +38,7 @@ abstract class Repository implements RepositoryContract
      * @param array $attributes
      * @return boolean
      */
-    public function update($id, array $attributes)
-    {
-        $currentModel = $this->find($id);
-
-        return $currentModel->update($attributes);
-    }
+    public function update($id, array $attributes);
 
     /**
      * Method to delete a record.
@@ -69,12 +47,7 @@ abstract class Repository implements RepositoryContract
      * @param int $id
      * @return boolean
      */
-    public function delete($id)
-    {
-        $currentModel = $this->find($id);
-
-        return $currentModel->delete();
-    }
+    public function delete($id);
 
     /**
      * Method to check field value is exist in the table or not.
@@ -82,10 +55,7 @@ abstract class Repository implements RepositoryContract
      * @param array $condition
      * @return mixed
      */
-    public function isFieldValueExists(array $condition)
-    {
-        return $this->model->where($condition)->exists();
-    }
+    public function isFieldValueExists(array $condition);
 
     /**
      * Method to update/create the records.
@@ -94,10 +64,7 @@ abstract class Repository implements RepositoryContract
      * @param array $insertAttributes
      * @return mixed
      */
-    public function updateOrCreate(array $whereAttributes, array $insertAttributes)
-    {
-        return $this->model->updateOrCreate($whereAttributes, $insertAttributes);
-    }
+    public function updateOrCreate(array $whereAttributes, array $insertAttributes);
 
     /**
      * To delete record by matching multiple attributes
@@ -105,8 +72,5 @@ abstract class Repository implements RepositoryContract
      * @param array $attributes
      * @return boolean
      */
-    public function deleteBy(array $attributes)
-    {
-        return $this->model->where($attributes)->delete();
-    }
+    public function deleteBy(array $attributes);
 }
