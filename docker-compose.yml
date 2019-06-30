@@ -12,7 +12,7 @@ services:
   mysql:
     image: mysql:5.7
     ports:
-      - "3308:3306"
+      - "3303:3306"
     environment:
       - MYSQL_DATABASE=superAdmin
       - MYSQL_USER=root
@@ -25,7 +25,7 @@ services:
   nginx:
     image: nginx
     ports:
-      - "8000:8000"
+      - "8085:8000"
     volumes:
       - .docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf:cached
       - ./:/application:cached
@@ -35,7 +35,7 @@ services:
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     ports:
-      - 8383:80
+      - 8585:80
     links:
       - "mysql:mysql"
     environment:
